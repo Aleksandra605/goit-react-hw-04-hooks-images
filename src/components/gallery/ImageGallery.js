@@ -8,6 +8,8 @@ import fetchAPI from '../../services/fetchAPI';
 import ButtonLoadMore from '../load-more/ButtonLoadMore';
 import Modal from '../modal-window/Modal';
 
+let selectedIndex = null;
+
 const ImageGallery = function ({ name }) {
   const [pictures, setPictures] = useState(null);
   const [status, setStatus] = useState('idle');
@@ -49,6 +51,30 @@ const ImageGallery = function ({ name }) {
 
   const closeModal = event => {
     setCurrentImage(null);
+  };
+
+  useEffect(() => {
+    if (currentImage) {
+      window.addEventListener('keydown', turnOnKeys);
+    }
+
+    return () => {
+      window.removeEventListener('keydown', turnOnKeys);
+    }; // eslint-disable-next-line
+  }, [currentImage]);
+
+  const turnOnKeys = event => {
+    if (event.keyCode === 39) {
+      selectedIndex =
+        selectedIndex === pictures.length - 1 ? 0 : selectedIndex + 1;
+      return setCurrentImage(pictures[selectedIndex]);
+    }
+
+    if (event.keyCode === 37) {
+      selectedIndex =
+        selectedIndex === 0 ? pictures.length - 1 : selectedIndex - 1;
+      return setCurrentImage(pictures[selectedIndex]);
+    }
   };
 
   return (
