@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { BiSearch } from 'react-icons/bi';
 import s from './searchBar-styles.module.css';
+import PropTypes from 'prop-types';
 
 const SearchBar = function ({ onSubmit }) {
   const [value, setValue] = useState('');
@@ -43,6 +44,10 @@ const SearchBar = function ({ onSubmit }) {
       </form>
     </header>
   );
+};
+
+SearchBar.propTypes = {
+  onSubmit: PropTypes.func,
 };
 
 export default SearchBar;

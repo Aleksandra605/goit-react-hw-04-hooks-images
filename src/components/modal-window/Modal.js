@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import s from './modal-styles.module.css';
 import { createPortal } from 'react-dom';
+import PropTypes from 'prop-types';
 
 const modalRoot = document.querySelector(`#modal-root`);
 
@@ -36,6 +37,11 @@ const Modal = function ({ image, close }) {
     </div>,
     modalRoot,
   );
+};
+
+Modal.propTypes = {
+  image: PropTypes.object,
+  close: PropTypes.func,
 };
 
 export default Modal;

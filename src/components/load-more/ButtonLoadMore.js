@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import s from '../gallery/common-styles.module.css';
 import fetchAPI from '../../services/fetchAPI';
+import PropTypes from 'prop-types';
 
 const ButtonLoadMore = function ({ name, onLoadMore }) {
   let [page, setPage] = useState(1);
@@ -22,6 +23,11 @@ const ButtonLoadMore = function ({ name, onLoadMore }) {
       Load more
     </button>
   );
+};
+
+ButtonLoadMore.propTypes = {
+  name: PropTypes.string,
+  onLoadMore: PropTypes.func,
 };
 
 export default ButtonLoadMore;

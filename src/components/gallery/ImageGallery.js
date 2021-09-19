@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import fetchAPI from '../../services/fetchAPI';
 import ButtonLoadMore from '../load-more/ButtonLoadMore';
 import Modal from '../modal-window/Modal';
+import PropTypes from 'prop-types';
 
 let selectedIndex = null;
 
@@ -111,6 +112,10 @@ const ImageGallery = function ({ name }) {
       )}
     </div>
   );
+};
+
+ImageGallery.propTypes = {
+  name: PropTypes.string,
 };
 
 export default ImageGallery;
