@@ -17,7 +17,7 @@ const ImageGallery = function ({ name }) {
   const [currentImage, setCurrentImage] = useState(null);
 
   useEffect(() => {
-    if (name === '' || null || undefined) {
+    if (!name) {
       return;
     }
 
